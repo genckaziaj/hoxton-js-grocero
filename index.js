@@ -204,7 +204,6 @@ function renderTotal() {
     sum += price;
   }
 
-  console.log(sum);
   totalPriceSpan.textContent = `£${sum.toFixed(2)}`;
 }
 
