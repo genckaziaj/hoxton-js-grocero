@@ -200,7 +200,7 @@ function renderTotal() {
   let prices = getTotal();
   let sum = 0;
 
-  for (price of prices) {
+  for (let price of prices) {
     sum += price;
   }
 
