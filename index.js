@@ -30,12 +30,61 @@ let state = {
       name: "carrot",
       price: 0.15,
       stock: 2,
-      inCart: 5,
+      inCart: 0,
     },
     {
       id: 3,
       name: "apple",
       price: 0.25,
+      stock: 3,
+      inCart: 0,
+    },
+    {
+      id: 4,
+      name: "apricot",
+      price: 0.55,
+      stock: 4,
+      inCart: 0,
+    },
+    {
+      id: 5,
+      name: "avocado",
+      price: 0.85,
+      stock: 1,
+      inCart: 0,
+    },
+    {
+      id: 6,
+      name: "bananas",
+      price: 0.25,
+      stock: 8,
+      inCart: 0,
+    },
+    {
+      id: 7,
+      name: "bell-pepper",
+      price: 0.35,
+      stock: 4,
+      inCart: 0,
+    },
+    {
+      id: 8,
+      name: "berry",
+      price: 0.25,
+      stock: 3,
+      inCart: 0,
+    },
+    {
+      id: 9,
+      name: "blueberry",
+      price: 0.5,
+      stock: 9,
+      inCart: 0,
+    },
+    {
+      id: 10,
+      name: "eggplant",
+      price: 0.45,
       stock: 1,
       inCart: 0,
     },
@@ -58,7 +107,9 @@ function getCartItems() {
 }
 
 // output: the current total
-function getTotal() {}
+function getTotal() {
+  return state.storeItems.map((item) => item.price * item.inCart);
+}
 
 function increaseQuantity(item) {
   if (item.stock === 0) return;
@@ -143,7 +194,18 @@ function renderCartItems() {
 }
 
 function renderTotal() {
-  // update the total text
+  let totalPriceSpan = document.querySelector(".total-number");
+  totalPriceSpan.textContent = "";
+
+  let prices = getTotal();
+  let sum = 0;
+
+  for (price of prices) {
+    sum += price;
+  }
+
+  console.log(sum);
+  totalPriceSpan.textContent = `£${sum.toFixed(2)}`;
 }
 
 function render() {
